@@ -52,8 +52,15 @@ df_events=pd.read_csv('events.csv', delimiter=';')
 
 #df_heure par heure - ajouté le 24 mai 2023
 df_hourly = pd.read_csv('hourly 2022 full data.csv', delimiter=';')
-df_hourly['Time']=pd.to_datetime(df_hourly['Time'])
+df_hourly['Time']=pd.to_datetime(
+    df_hourly['Time'],
+    format="%d/%m/%Y %H:%M",
+    errors="coerce"   # unparsable -> NaT instead of crash
+)
 df_hourly['date']=df_hourly['Time'].dt.date
+
+
+
 
 df_hourly["Num Jour"]=pd.to_datetime(df_hourly["date"]).dt.dayofweek.astype(int)
 df_hourly["Jour"]=df_hourly["Num Jour"].map(dict_jours)
