@@ -16,11 +16,15 @@ import plotly.io as pio
 from datetime import datetime
 import plotly.subplots as sp
 import itertools
+import os
 
 
 color_sequence = itertools.cycle(px.colors.qualitative.G10)
 pio.renderers.default='browser'
-mapbox_access_token = "pk.eyJ1IjoiY3JvdXNzIiwiYSI6ImNrbmxpNTI2ejA3YmoydWt4MGQ0aGJxOTcifQ.aVndCa8vOi9Ycnrf-sDVZA"  # a renseigner
+#mapbox_access_token = "pk.eyJ1IjoiY3JvdXNzIiwiYSI6ImNrbmxpNTI2ejA3YmoydWt4MGQ0aGJxOTcifQ.aVndCa8vOi9Ycnrf-sDVZA"  # a renseigner
+
+mapbox_access_token = os.getenv("MAPBOX_TOKEN")
+
 
 dict_jours={0:'Lundi', 1:'Mardi',2:'Mercredi',3:'Jeudi',4:'Vendredi',5:'Samedi',6:'Dimanche'}
 dict_mois = {
